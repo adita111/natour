@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 // eslint-disable-next-line no-unused-vars
 const slugify = require('slugify');
-const validator = require('validator');
+// const validator = require('validator');
 
 const tourScheme = new mongoose.Schema(
   {
@@ -120,7 +120,7 @@ tourScheme.pre(/^find/, function (next) {
 });
 
 tourScheme.post(/^find/, function (docs, next) {
-  console.log(docs);
+  // console.log(docs);
   console.log(`Query took ${Date.now() - this.start} milliseconds`);
   next();
 });
