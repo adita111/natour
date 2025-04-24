@@ -3,21 +3,20 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const Tour = require('../../models/tourModel');
 
-dotenv.config({ path: './config.env' });
+dotenv.config({ path: `${__dirname}/../../config.env` });
 
 dotenv.config(); // Load .env variables
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
   })
   .then(() => console.log('✅ DB connection successful!'))
   .catch((err) => console.error('❌ DB connection error:', err));
 
 ////// Read JSON file
 const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/tours-simple.json`, 'utf-8'),
+  fs.readFileSync(`${__dirname}/tours.json`, 'utf-8'),
 );
 
 //// Import data into DB
